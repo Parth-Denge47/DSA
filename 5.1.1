@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+// write your code here 
+
+
+// Define the Node structure for Circular Linked List
+#include<stdio.h>
+#include<stdlib.h>
+
+// write your code here 
+// Define the node structure and a NODE type
+typedef struct node {
+    int data;
+    struct node *next;
+} Node;
+
+typedef Node* NODE;
+
+// Function to insert a node at a given position in the circular linked list
+NODE insertAtPositionInCLL(NODE first, int pos, int data) {
+    NODE newNode = (NODE)malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    
+    // If list is empty, only position 1 is valid
+    if (first == NULL) {
+        if (pos == 1) {
+            newNode->next = newNode;
+            return newNode;
+        } else {
+            printf("Position not found\n");
+            free(newNode);
+            return first;
+        }
