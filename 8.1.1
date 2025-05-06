@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 100
+typedef struct node {
+struct node *next;
+int vertex;
+} *GNODE;
+GNODE graph[MAX] = {NULL};
+
+void print(int *n);
+void insertVertex(int *n);
+void insertEdge(int *n);
+void deleteVertex(int *n);
+void deleteEdge(int *n);
+
+
+void insertVertex(int *n){
+	(*n)++;
+	graph[*n]=NULL;
+	printf("Vertex inserted: %d\n",*n);
+}
+
+void insertEdge(int *n){
+	int src, dest;
+	printf("Enter the source vertex of the edge : ");
+	scanf("%d",&src);
+	printf("Enter the destination vertex of the edge : ");
+	scanf("%d",&dest);
+	if(src>*n|| dest > *n || src<=0 || dest <=0){
+		printf("Inavlid vertex number.\n");
+		return;
+	}
+	GNODE newNode = (GNODE)malloc(sizeof(struct node));
+	newNode->vertex = dest;
+	newNode->next = NULL;
+	if(graph[src]==NULL)
